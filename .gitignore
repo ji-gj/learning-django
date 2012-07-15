@@ -36,6 +36,9 @@ pip-log.txt
 # Ignore the default SQLite database.
 *.sqlite3
 
+# markdown html
+/notes/*.html
+
 # Ignore other unneeded files.
 *.swp
 *~
