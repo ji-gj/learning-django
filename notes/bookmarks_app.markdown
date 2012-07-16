@@ -294,6 +294,10 @@ settings.py 안의 TEMPLATE_DIRS을 설정할 때 절대 경로로 전체경로�
 병합을 하였다면 bookmarks-app 브랜치를 삭제하자. 브랜치를 삭제하였더라도 eof-bookmarks-app 태그를 만들어 놓았으므로 이 장의 마지막 상태로 체크아웃할 수 있다.
 
 	$ git branch -d bookmarks-app
+
+_참고:_ 원격브랜치가 연결되어 있는 경우에는 경고 메시지가 출력되면서 삭제 되지 않는다. 이 때에는 -D 옵션을 이용하던지 혹은 원격브랜치를 삭제한 후에 로컬브랜치를 삭제할 수 있다. 원격 브랜치의 삭제 방법은 아래 "기타 git 명령"을 참고한다.
+
+	$ git branch -d bookmarks-app
 	warning: not deleting branch 'bookmarks-app' that is not yet merged to
 	         'refs/remotes/origin/bookmarks-app', even though it is merged to HEAD.
 	error: The branch 'bookmarks-app' is not fully merged.
