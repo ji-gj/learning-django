@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from bookmarks.views import main_page, user_page
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -14,4 +15,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+    (r'^$', main_page),
+    (r'^user/(\w+)/$', user_page),
 )

@@ -1,3 +1,9 @@
+import os
+
+# cwd is django_bookmarks. determine project path
+cwd = os.path.dirname(os.path.abspath(__file__)) 
+project_path = os.path.dirname(cwd)
+
 # Django settings for django_bookmarks project.
 
 DEBUG = True
@@ -109,6 +115,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '%s/templates' % ( project_path )
 )
 
 INSTALLED_APPS = (
@@ -122,6 +129,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'bookmarks',
 )
 
 # A sample logging configuration. The only tangible logging
