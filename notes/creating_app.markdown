@@ -98,7 +98,7 @@ settings.py를 열어서 DATABASES 항목을 아래와 같은 내용으로 수�
 ctrl+c 키를 입력하여 웹서버를 멈출 수 있다.
 
 ###git 구성하기
-앞으로 실습을 더 진행하기 전에 git로 버전 관리를 시작하도록 구성하자.
+앞으로 실습을 더 진행하기 전에 git로 버전 관리를 하도록 구성하자.
 
 ####git 저장소 만들기
 manage.py가 설치되어 있는 디렉터리에서 아래 명령으로 git 저장소를 만든다.
@@ -232,7 +232,19 @@ git branch명령으로 브랜치를 확인할 수 있다. 최초에 커밋을 �
 	$ git branch
 	* master
 
+###태그 만들기
+
+현재의 소스코드 구조에 태그를 부여하자. tag 명령으로 태그를 생성한다. 아래 명령은 eof-creating-app를 이름으로 하는 태그를 생성한다.
+
+	$ git tag eof-creating-app
+
+태그의 리스트를 확인하기 위해서는 옵션 없이 tag 명령만 수행하거나 -l 옵션을 사용한다. 
+
+	$ git tag -l
+
 ####github에 원격저장소 만들기
+
+지금 까지 실습한 내용을 git 원격저장소에 올리고 공유하고 싶다면 github를 이용할 수 있다.
 github에 가입한 후 원격저장소를 만든다.
 원격저장소의 이름은 "learning-django"로 한다.
 
@@ -256,6 +268,18 @@ remote add 명령으로 원격저장소의 별칭을 추가 한다. origin은 �
 	$ git push
 
 한다.
+
+####원격 저장소에 태그 푸시하기
+
+푸시할 때 브랜치명 대신 태그명을 명시하면 태그를 원격저장소에 푸시할 수 있다. eof-creating-app 태그를 푸시하려면 아래와 같이 수행한다.
+
+	$ git push origin eof-creating-app
+	To https://github.com/onmoving/learning-django.git
+	 * [new tag]         eof-creating-app -> eof-creating-app
+
+혹은 모든 로컬태그를 한꺼번에 올리려면 --tags 옵션을 이용할 수 있다.
+
+	$ git  push --tags
 
 ###기타 git 명령
 
@@ -327,27 +351,6 @@ branch 명령을 이용하면 현재 branch의 목록을 볼 수있다. 브랜�
 	$ git push
 
 하면 된다.
-
-###태그 만들기
-
-tag 명령으로 태그를 생성한다. 아래 명령은 eof-creating-app를 이름으로 하는 태그를 생성한다.
-
-	$ git tag eof-creating-app
-
-태그의 리스트를 확인하기 위해서는 옵션 없이 tag 명령만 수행하거나 -l 옵션을 사용한다. 
-
-	$ git tag -l
-
-###원격 저장소에 태그 올리기
-
-원격 저장소에 eof-creating-app 태그를 올리기 위해 push 명령을 이용한다.
-
-	$ git push origin eof-creating-app
-
-혹은 모든 로컬태그를 한꺼번에 올리려면 --tags 옵션을 이용할 수 있다.
-
-	$ git  push --tags
-
 
 ###태그 삭제하기
 
