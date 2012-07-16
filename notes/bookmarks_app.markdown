@@ -28,6 +28,7 @@ __태그 체크아웃하기:__ 코드의 마지막 상태가 이미 이전 장�
 태그를 체크아웃하였다면 이 장을 실습하기 위한 새로운 브랜치를 만들자. 브랜치의 이름은 bookmarks-app으로 정한다.
 
 	$ git checkout -b bookmarks-app
+	Switched to a new branch 'bookmarks-app'
 
 ####syncdb 수행
 
@@ -265,14 +266,38 @@ settings.py 안의 TEMPLATE_DIRS을 설정할 때 절대 경로로 전체경로�
 현재 브랜치인 bookmarks-app를 master 브랜치에 병합하자. 병합이 되는 타켓 브랜치가 현재 브랜치 이므로 master 브랜치를 현재 브랜치로 변경하자
 
 	$ git checkout master
+	Switched to branch 'master'
 
 병합은 merge 명령을 수행한다.
 
 	$ git merge bookmarks-app
+	Updating c8b25c7..f919392
+	Fast-forward
+	 bookmarks/models.py              |   12 ++
+	 bookmarks/tests.py               |   16 ++
+	 bookmarks/views.py               |   34 ++++
+	 django_bookmarks/settings.py     |    8 +
+	 django_bookmarks/urls.py         |    3 +
+	 notes/bookmarks_app.markdown     |  331 ++++++++++++++++++++++++++++++++++++++
+	 notes/table_of_contents.markdown |    3 +-
+	 templates/main_page.html         |   18 +++
+	 templates/user_page.html         |   18 +++
+	 9 files changed, 442 insertions(+), 1 deletion(-)
+	 create mode 100644 bookmarks/__init__.py
+	 create mode 100644 bookmarks/models.py
+	 create mode 100644 bookmarks/tests.py
+	 create mode 100644 bookmarks/views.py
+	 create mode 100644 notes/bookmarks_app.markdown
+	 create mode 100644 templates/main_page.html
+	 create mode 100644 templates/user_page.html
 
 병합을 하였다면 bookmarks-app 브랜치를 삭제하자. 브랜치를 삭제하였더라도 eof-bookmarks-app 태그를 만들어 놓았으므로 이 장의 마지막 상태로 체크아웃할 수 있다.
 
 	$ git branch -d bookmarks-app
+	warning: not deleting branch 'bookmarks-app' that is not yet merged to
+	         'refs/remotes/origin/bookmarks-app', even though it is merged to HEAD.
+	error: The branch 'bookmarks-app' is not fully merged.
+	If you are sure you want to delete it, run 'git branch -D bookmarks-app'.
 
 ###github에 올리기
 
@@ -283,6 +308,8 @@ settings.py 안의 TEMPLATE_DIRS을 설정할 때 절대 경로로 전체경로�
 push 명령을 수행하여 지금 까지 작업한 로컬 변경사항을 원격저장소에 올리자. push는 로컬의 변경사항을 원격저장소에 반영한다.
 
 	$ git push origin master
+	To https://github.com/onmoving/learning-django.git
+	   c8b25c7..f919392  master -> master
 
 _참고:_ 푸시와는 반대로 원격 정장소의 변경된 내용을 가져오는 것은 풀(pull)이다. 원격저장소와 연결되어 있는 로컬저장소로 이동하여 pull 명령을 수행하면 원격 저장소의 변경된 내용을 로컬 저장소로 동기화 한다.
 
@@ -293,6 +320,8 @@ _참고:_ 푸시와는 반대로 원격 정장소의 변경된 내용을 가져�
 태그명을 명시하여 eof-bookmarks-app 태그를 원격저장소에 푸시하자.
 
 	$ git push origin eof-bookmarks-app
+	To https://github.com/onmoving/learning-django.git
+	 * [new tag]         eof-bookmarks-app -> eof-bookmarks-app
 
 ####참고: 기타 git 명령
 
@@ -301,6 +330,8 @@ git와 github를 이용하다 보면 여러 가지 상황이 생긴다. 특정 �
 __브랜치를 원격저장소로 푸시하기:__ 브랜치에 대한 작업이 아직 끝나지 않은 상태여서 혹은 브랜치를 (특정 시점까지 아니면 무기한) 유지하기 위해서 원격 저장소에 푸시하고 싶다면 master브랜치 대시 푸시하려는 브랜치 명을 명시하면 된다.
 
 	$ git push origin bookmarks-app
+	To https://github.com/onmoving/learning-django.git
+	   a26145a..f919392  bookmarks-app -> bookmarks-app
 
 __원격브랜치를 체크아웃하기:__ 원격브랜치를 체크아웃하려면 git clone 이나 git pull한 상태이어야 한다. git branch -a를 수행하여 원격브랜치를 확인할 수 있다.
 
