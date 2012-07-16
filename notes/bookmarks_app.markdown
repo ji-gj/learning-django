@@ -249,6 +249,10 @@ settings.py 안의 TEMPLATE_DIRS을 설정할 때 절대 경로로 전체경로�
 ####커밋 하기
 
 	$ git commit -m "major commit of bookmarks-app"
+	[bookmarks-app a8c943d] major commit of bookmarks-app
+	 8 files changed, 370 insertions(+), 4 deletions(-)
+	 create mode 100644 templates/main_page.html
+	 create mode 100644 templates/user_page.html
 
 ####태그 만들기
 
