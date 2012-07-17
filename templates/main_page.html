@@ -1,18 +1,13 @@
-<html>
-  <head>
-    <title>Django Bookmarks - User: {{ username }}</title>
-  </head>
-  <body>
-    <h1>Bookmarks for {{ username }}</h1>
-    {% if bookmarks %}
-      <ul>
-        {% for bookmark in bookmarks %}
-          <li><a href="{{ bookmark.link.url }}">
-            {{ bookmark.title }}</a></li>
-        {% endfor %}
-      </ul>
+{% extends "base.html" %}
+{% block title %}Welcome to Django Bookmarks{% endblock %}
+{% block head %}Welcome to Django Bookmarks{% endblock %}
+{% block content %}
+    {% if user.username %}
+        <p>Welcome {{ user.username }}!
+            Here you can store and share bookmarks!</p>
     {% else %}
-      <p>No bookmarks found.</p>
+        <p>Welcome anonymous user!
+            You need to <a href="/login/">login</a>
+            before you can store and share bookmarks.</p>
     {% endif %}
-  </body>
-</html>
+{% endblock %}
