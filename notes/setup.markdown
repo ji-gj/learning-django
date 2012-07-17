@@ -6,7 +6,6 @@ github에서 복제해 오기
 
 	$ git clone https://github.com/onmoving/learning-django.git
 
-
 syncdb 수행
 ----------
 
