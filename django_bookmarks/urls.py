@@ -1,6 +1,6 @@
 import os
 from django.conf.urls import patterns, include, url
-from bookmarks.views import main_page, user_page, logout_page, register_page
+from bookmarks.views import main_page, user_page, logout_page, register_page, bookmark_save_page, tag_page, tag_cloud_page
 from django.views.generic.simple import direct_to_template
 from settings import project_path
 
@@ -22,13 +22,25 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+
+    # Browsing
     (r'^$', main_page),
     (r'^user/(\w+)/$', user_page),
+    (r'^tag/([^\s]+)/$', tag_page),
+    (r'^tag/$', tag_cloud_page),
+
+    # Session management
     (r'^login/$', 'django.contrib.auth.views.login'),
     (r'^logout/$', logout_page),
     (r'^register/$', register_page),
-    (r'register/success/$', direct_to_template,
+    (r'^register/success/$', direct_to_template,
          {'template': 'registration/register_success.html'}),
+
+    # Account management
+    (r'^save/$', bookmark_save_page),
+
+    # Site media
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
          {'document_root': site_media}),
+
 )
